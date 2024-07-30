@@ -1,0 +1,15 @@
+@import url('./screens/ScreenOne/ScreenOne.css');
+@import url('./screens/ScreenTwo/ScreenTwo.css');
+@import url('./screens/ScreenThree/ScreenThree.css');
+@import url('./screens/ScreenFour/ScreenFour.css');
+@import url('./screens/ScreenFive/ScreenFive.css');
+@import url('./screens/ScreenSix/ScreenSix.css');
+@import url('./screens/ScreenSeven/ScreenSeven.css');
+@import url('./screens/ScreenEight/ScreenEight.css');
+@import url('./screens/ScreenNine/ScreenNine.css');
+
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
