@@ -7,9 +7,18 @@
 @import url('./screens/ScreenSeven/ScreenSeven.css');
 @import url('./screens/ScreenEight/ScreenEight.css');
 @import url('./screens/ScreenNine/ScreenNine.css');
+@import url('./App.css');
+
+
+@font-face {
+    font-family: 'LemonChicken';
+    src: url('/LEMONCHI.ttf');
+    
+}
 
 *{
     margin: 0%;
     padding: 0%;
     box-sizing: border-box;
+    font-family:  "Cinzel Decorative", serif;
 }
