@@ -3,6 +3,11 @@
     background-color: white;
     color: black;
 }
+
+.svg-container{
+    position: absolute;
+    margin: 0%;
+}
 .header-container{
     height: 15vh;
     background-color: black;

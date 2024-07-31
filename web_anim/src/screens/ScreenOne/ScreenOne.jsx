@@ -1,7 +1,21 @@
 
 const ScreenOne = () => {
+    const svgWidth = window.innerWidth;
+    const svgHeight = 110
+
+
     return (
+
+
         <div className="screenone-master-container">
+            <svg className="svg-container" width={svgWidth} height={svgHeight} >
+                <rect
+                    x="0"
+                    y="0"
+                    width={svgWidth}
+                    height={svgHeight}
+                    style={{ fill: 'blue' }}
+                />            </svg>
             <div className="header-container">
                 <div className="header-logo">FuckIT</div>
                 <div className="navbar-container">
