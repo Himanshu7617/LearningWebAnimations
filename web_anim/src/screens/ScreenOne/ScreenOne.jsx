@@ -3,7 +3,7 @@ import {  useLayoutEffect, useRef } from 'react';
 
 const ScreenOne = () => {
     const svgWidth = window.innerWidth;
-    const svgHeight = 110
+    const svgHeight = 120
 
     //declaring all the references
     const headerSVGRef = useRef(null);
@@ -15,7 +15,10 @@ const ScreenOne = () => {
 
     //animation stuff 
     useLayoutEffect(()=>{
-       
+       t1.from(headerSVGRef.current, {
+        y:-100,
+        ease: 'power4.out'
+       })
         t1.to(
             headerSVGRef.current, {
                 attr: {d : rectPath}, duration:2.5, ease: "power4.out"
@@ -29,8 +32,8 @@ const ScreenOne = () => {
     const rectCurvePath2 = `
     M0 0 
     L${svgWidth} 0 
-    L${svgWidth} ${svgHeight/2} 
-    Q${svgWidth / 2} ${svgHeight/2 + 50} ${0} ${svgHeight/2}
+    L${svgWidth} ${svgHeight} 
+    Q${svgWidth / 2} ${svgHeight + 50} ${0} ${svgHeight}
     Z
   `;
 
@@ -54,7 +57,7 @@ const ScreenOne = () => {
         
 
         <div className="screenone-master-container">
-            <svg  className="svg-container" width={svgWidth} height={svgHeight}>
+            <svg  className="svg-container" width={svgWidth} height={svgHeight+100}>
                 <path ref={headerSVGRef} d={rectCurvePath2} style={{'fill':'black'}} ></path>
             </svg>
             <div className="header-container">
