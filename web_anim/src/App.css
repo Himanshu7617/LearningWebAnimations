@@ -1,3 +1,17 @@
 *{
     margin: 0%;
 }
+
+/*configuring the cursor*/
+/* .app-master-container{
+    background-color: white;
+} */
+.cursor-container{
+    height: 30px;
+    width: 30px;
+    position: fixed;
+    mix-blend-mode: difference;
+    background-color: white;
+    border-radius: 50%;
+    z-index: 100;
+}
