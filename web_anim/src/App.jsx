@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react"
 import {motion, useMotionValue, useSpring} from 'framer-motion'
+import {gsap} from 'gsap'
 
 //importing all the screens 
 import ScreenOne from "./screens/ScreenOne/ScreenOne"
@@ -13,8 +14,12 @@ import ScreenEight from "./screens/ScreenEight/ScreenEight"
 import ScreenNine from "./screens/ScreenNine/ScreenNine"
 
 const App = () => {
-
+ //creating all the references
   const cur = useRef(null);
+  const damonSalvatoreRef = useRef(null);
+
+
+
   const mouse = {
     x: useMotionValue(0),
     y: useMotionValue(0),
@@ -33,8 +38,34 @@ const App = () => {
   //making the cursor move
   useEffect(()=>{
     document.addEventListener('mousemove', handleMouseMove)
+
+
+
+    //damonsalvatore hover animations 
+    function handleDamonHover(){
+      gsap.to(cur.current, {
+          scale: 2,
+          duration: 0.3,
+          ease: 'power3.out'
+      })
+    }
+    function handleDamonLeave(){
+      gsap.to(cur.current, {
+          scale: 1,
+          duration: 0.3,
+          ease: 'power3.out'
+      })
+    }
+  
+    //adding event listener on hovering on damon salvatore 
+    damonSalvatoreRef.current.addEventListener('mouseenter', handleDamonHover);
+    damonSalvatoreRef.current.addEventListener('mouseleave', handleDamonLeave);
+
+
     return ()=>{
       document.removeEventListener('mousemove', handleMouseMove);
+      damonSalvatoreRef.current.removeEventListener('mouseenter', handleDamonHover)
+      damonSalvatoreRef.current.removeEventListener('mouseleave', handleDamonLeave)
     }
   },[mouse.x, mouse.y])
   return (
@@ -46,7 +77,7 @@ const App = () => {
      >
     
      </motion.div>
-      <ScreenOne></ScreenOne>
+      <ScreenOne ref = {damonSalvatoreRef}></ScreenOne>
       <ScreenTwo></ScreenTwo>
       <ScreenThree></ScreenThree>
       <ScreenFour></ScreenFour>

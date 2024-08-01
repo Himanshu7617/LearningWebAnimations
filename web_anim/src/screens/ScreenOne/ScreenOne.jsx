@@ -1,7 +1,8 @@
 import { gsap } from 'gsap'
 import { useEffect, useRef } from 'react';
+import { forwardRef } from 'react';
 
-const ScreenOne = () => {
+const ScreenOne = forwardRef((props, ref) => {
     const svgWidth = window.innerWidth;
     const svgHeight = 180;
     const curveHeight = svgHeight + 80;
@@ -10,7 +11,6 @@ const ScreenOne = () => {
     const headerSVGRef = useRef(null);
     const headerLOGORef = useRef(null);
     const navbarRef  = useRef(null);
-
 
     //creating the timeline for animation
     const t1 = gsap.timeline();
@@ -38,17 +38,25 @@ const ScreenOne = () => {
                 opacity: 0, 
                 duration: 0.3, 
                 ease: 'power1.out'
-            })
+            },'<')
             t1.from(navbarRef.current.querySelectorAll('li'), {
                 y: -100,
                 opacity:0.3,
                 duration:0.3,
                 ease: 'power1.out',
                 stagger: 0.1
-            })
+            },'<')
 
         })
-        return () => ctx.revert();
+        
+
+
+        
+        return () => {
+            ctx.revert()
+
+
+        };
 
     }, [])
 
@@ -68,6 +76,7 @@ const ScreenOne = () => {
     Q${svgWidth / 2} ${svgHeight} ${0} ${svgHeight}
     Z
   `;
+ 
 
    
 
@@ -96,12 +105,12 @@ const ScreenOne = () => {
                     <h1>in bed with</h1>
                     <div className="damon-container">
                         <h1>my one love, </h1>
-                        <h1 className="damon-salvatore">DAMON SALVATORE</h1>
+                        <h1 ref={ref}  className="damon-salvatore">DAMON SALVATORE</h1>
                     </div>
                 </div>
             </div>
         </div>
     )
-}
+})
 
 export default ScreenOne
