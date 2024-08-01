@@ -1,69 +1,88 @@
-import {gsap} from 'gsap'
-import {  useLayoutEffect, useRef } from 'react';
+import { gsap } from 'gsap'
+import { useEffect, useRef } from 'react';
 
 const ScreenOne = () => {
     const svgWidth = window.innerWidth;
-    const svgHeight = 120
+    const svgHeight = 180;
+    const curveHeight = svgHeight + 80;
 
     //declaring all the references
     const headerSVGRef = useRef(null);
-
+    const headerLOGORef = useRef(null);
+    const navbarRef  = useRef(null);
 
 
     //creating the timeline for animation
     const t1 = gsap.timeline();
 
     //animation stuff 
-    useLayoutEffect(()=>{
-       t1.from(headerSVGRef.current, {
-        y:-100,
-        ease: 'power4.out'
-       })
-        t1.to(
-            headerSVGRef.current, {
-                attr: {d : rectPath}, duration:2.5, ease: "power4.out"
-            }
-        )
-    },[])
-    
+    useEffect(() => {
+        let ctx = gsap.context(() => {
+            t1.from(headerSVGRef.current, {
+                y: -100,
+                ease: 'power1.out',
+                duration: 0.5,
+                clearProps: 'y'
+
+            })
+            t1.to(headerSVGRef.current, {
+                attr: {
+                    d: FinalPath,
+                    
+                },
+                duration: 1,
+                    ease: "elastic.out(1.75,0.3)",
+            })
+            t1.from(headerLOGORef.current, {
+                y: -100,
+                opacity: 0, 
+                duration: 0.3, 
+                ease: 'power1.out'
+            })
+            t1.from(navbarRef.current.querySelectorAll('li'), {
+                y: -100,
+                opacity:0.3,
+                duration:0.3,
+                ease: 'power1.out',
+                stagger: 0.1
+            })
+
+        })
+        return () => ctx.revert();
+
+    }, [])
 
 
-    const rectPath = `M0 0 L${svgWidth} 0 L${svgWidth} ${svgHeight} L0 ${svgHeight} Z`;
-    const rectCurvePath2 = `
+
+    const InitialPath = `
     M0 0 
     L${svgWidth} 0 
     L${svgWidth} ${svgHeight} 
-    Q${svgWidth / 2} ${svgHeight + 50} ${0} ${svgHeight}
+    Q${svgWidth / 2} ${curveHeight} ${0} ${svgHeight}
     Z
   `;
-
-  const rectCurvePath3= `
-  M0 0 
-  L${svgWidth} 0 
-  L${svgWidth} ${svgHeight/2} 
-  Q${svgWidth - svgWidth/4} ${svgHeight/2 + 50} ${svgWidth/2} ${svgHeight/2}
-  Q${svgWidth/4} ${svgHeight/2+40} 0 ${svgHeight/2}
-  Z
-`;
-  const rectCurvePath1    = `
+    const FinalPath = `
     M0 0 
     L${svgWidth} 0 
-    Q${svgWidth / 2} ${svgHeight/2 + 20} ${0} ${0/2}
+    L${svgWidth} ${svgHeight} 
+    Q${svgWidth / 2} ${svgHeight} ${0} ${svgHeight}
     Z
   `;
 
-  
+   
+
     return (
-        
+
 
         <div className="screenone-master-container">
-            <svg  className="svg-container" width={svgWidth} height={svgHeight+100}>
-                <path ref={headerSVGRef} d={rectCurvePath2} style={{'fill':'black'}} ></path>
-            </svg>
+            
             <div className="header-container">
-                <div className="header-logo">FuckIT</div>
+            <svg className="svg-container" width={svgWidth} height={svgHeight + 100}>
+                <path ref={headerSVGRef} d={InitialPath} style={{ 'fill': 'black' }} ></path>
+            </svg>
+                <div ref={headerLOGORef} className="header-logo">FuckIT</div>
                 <div className="navbar-container">
-                    <ul className="navbar">
+                    <ul ref={navbarRef} className="navbar">
                         <li>tell</li>
                         <li>your</li>
                         <li>celebrity</li>

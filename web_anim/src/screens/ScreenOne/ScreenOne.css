@@ -4,15 +4,18 @@
     color: black;
 }
 
+.svg-container{
+    position: absolute;
+}
 
 .header-container{
     height: 15vh;
-    background-color: black;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 .header-logo{
+    z-index: 3;
     height: inherit;
     margin-left: 1.5rem;
     display: flex;
@@ -23,6 +26,7 @@
     font-weight: 700;
 }
 .navbar-container{
+    z-index: 3;
     height: inherit;
 }
 .navbar{
