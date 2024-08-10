@@ -65,3 +65,11 @@
     align-items: center;
     gap: 1rem;
 }
+
+.damon-salvatore{
+    z-index: 30;
+    background-color: blue;
+}
+.damon-salvatore > h1{
+    z-index:300;
+}

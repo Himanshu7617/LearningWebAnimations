@@ -2,7 +2,7 @@ import { gsap } from 'gsap'
 import { useEffect, useRef } from 'react';
 import { forwardRef } from 'react';
 
-const ScreenOne = forwardRef((props, ref) => {
+const ScreenOne = forwardRef(function ScreenOne(props, ref){
     const svgWidth = window.innerWidth;
     const svgHeight = 180;
     const curveHeight = svgHeight + 80;
@@ -105,7 +105,8 @@ const ScreenOne = forwardRef((props, ref) => {
                     <h1>in bed with</h1>
                     <div className="damon-container">
                         <h1>my one love, </h1>
-                        <h1 ref={ref}  className="damon-salvatore">DAMON SALVATORE</h1>
+                        <span  className="damon-salvatore" ref={ref}> <h1  >DAMON SALVATORE</h1></span>
+                        
                     </div>
                 </div>
             </div>
