@@ -44,7 +44,7 @@ const App = () => {
     //damonsalvatore hover animations 
     function handleDamonHover(){
       gsap.to(cur.current, {
-          scale: 2,
+          scale: 4,
           duration: 0.3,
           ease: 'power3.out'
       })

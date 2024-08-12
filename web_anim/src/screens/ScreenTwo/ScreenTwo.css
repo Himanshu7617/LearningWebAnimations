@@ -1,6 +1,62 @@
 .screentwo-master-container{
     height: 100vh;
+    width: 100vw;
     background-color: black;
     color: white;
+}
+.headline{
+    height: 20vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    position: relative;
+    
+}
+.text-line{
+    white-space: nowrap;
+    min-width: fit-content;
+    height: 20vh;
+    font-size: 5rem;
+    font-family: sans-serif;
+    color: black;
+}
 
+.text-container1{
+    background-color: rgb(172, 172, 212);
+}
+.text-container2{
+    background-color: rgb(206, 196, 108);
+}
+.text-container3{
+    background-color: rgb(172, 172, 212);
+}
+.text-container4{
+    background-color:rgb(206, 196, 108);
+}
+.text-container5{
+    background-color: rgb(172, 172, 212);
+}
+
+.both-headline-container{
+    height: inherit;
+    min-width: fit-content;
+    display: flex;
+    gap: 1rem;
+    position: absolute;
+
+}
+.both-headline-container1{
+    left: 100%;
+}
+.both-headline-container2{
+    left: -220%;
+}
+.both-headline-container3{
+    left: -180%;
+}
+.both-headline-container4{
+    left: 80%;
+}
+.both-headline-container5{
+    left: -200%;
 }
